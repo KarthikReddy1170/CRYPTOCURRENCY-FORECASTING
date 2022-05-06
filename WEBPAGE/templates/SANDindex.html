@@ -1,0 +1,35 @@
+{% extends "SANDlayout.html" %}
+{% block content %}
+    <div class="site-header-logo">
+        <h1 class="text-center">
+            Analytics
+        </h1>
+    </div>
+    <div class="row p-4">
+        <div class="card m-auto" style="width: 90%;" data-aos="fade-left">
+            <div class="card-body">
+                <div id="chart1"></div>
+                <p class="card-text">The Sandbox is a virtual world in the sandbox genre. The project’s metavirtual universe resembles Minecraft, which uses “cubic” graphics. Users can freely develop a virtual world, create real estate and objects, move and participate in mini-games.
+
+The project is built on the Ethereum blockchain. Players own portions of the metaworld, which are non-interchangeable LAND tokens. Users create virtual world objects represented as NFTs.
+
+Digital real estate and objects are traded on The Sandbox Marketplace. SAND utility tokens are used for interaction with the metaviverse, calculations on the platform and other purposes.</p>
+            </div>
+        </div>
+    </div>
+        <div class="card mb-4 m-auto" style="width: 90%;" data-aos="fade-left">
+            <div class="card-body">
+                <h1 class="card-text"></h1>
+                <div id="chart2"></div>
+            </div>
+        </div>
+<!-- plotly CDN -->
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script type="text/javascript">
+        var graphs1 = {{ graph1JSON | safe}};
+        Plotly.plot("chart1", graphs1,{});
+        var graphs2 = {{ graph2JSON | safe}};
+        Plotly.plot("chart2", graphs2,{});
+    </script>
+{% endblock %}

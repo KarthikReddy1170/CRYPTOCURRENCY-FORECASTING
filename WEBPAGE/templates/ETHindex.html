@@ -1,0 +1,32 @@
+{% extends "ETHlayout.html" %}
+{% block content %}
+    <div class="site-header-logo">
+        <h1 class="text-center">
+            Analytics
+        </h1>
+    </div>
+    <div class="row p-4">
+        <div class="card m-auto" style="width: 90%;" data-aos="fade-left">
+            <div class="card-body">
+                <div id="chart1"></div>
+                <p class="card-text">Ethereum is a decentralized, open-source blockchain with smart contract functionality. Ether (ETH or Ξ) is the native cryptocurrency of the platform. Among cryptocurrencies, Ether is second only to Bitcoin in market capitalization.
+Ethereum was conceived in 2013 by programmer Vitalik Buterin.Additional founders of Ethereum included Gavin Wood, Charles Hoskinson, Anthony Di Iorio and Joseph Lubin.In 2014, crowdfunded development work began; went live on 30 July 2015.Ethereum allows anyone to deploy permanent and immutable decentralized applications onto it, with which users can interact.Decentralized finance (DeFi) applications provide a broad array of financial services without the need for typical financial intermediaries like brokerages, exchanges, or banks, such as allowing cryptocurrency users to borrow against their holdings or lend them out for interest.Ethereum also allows users to create and exchange NFTs, which are unique tokens representing ownership of an associated asset or privilege, as recognized by any number of institutions. Additionally, many other cryptocurrencies utilize the ERC-20 token standard on top of the Ethereum blockchain and have utilized the platform for initial coin offerings.</p>
+            </div>
+        </div>
+    </div>
+        <div class="card mb-4 m-auto" style="width: 90%;" data-aos="fade-left">
+            <div class="card-body">
+                <h1 class="card-text"></h1>
+                <div id="chart2"></div>
+            </div>
+        </div>
+<!-- plotly CDN -->
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script type="text/javascript">
+        var graphs1 = {{ graph1JSON | safe}};
+        Plotly.plot("chart1", graphs1,{});
+        var graphs2 = {{ graph2JSON | safe}};
+        Plotly.plot("chart2", graphs2,{});
+    </script>
+{% endblock %}
